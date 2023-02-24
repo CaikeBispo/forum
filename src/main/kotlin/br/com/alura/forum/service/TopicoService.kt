@@ -1,74 +1,28 @@
 package br.com.alura.forum.service
 
-import br.com.alura.forum.model.Curso
-import br.com.alura.forum.model.StatusTopico
-import br.com.alura.forum.model.Topico
-import br.com.alura.forum.model.Usuario
+import br.com.alura.forum.dto.NovoTopicoDTO
+import br.com.alura.forum.model.Topic
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
 
 @Service
 class TopicoService(
-    private var topicos: List<Topico>
+    private var topics: List<Topic> = ArrayList(),
+    private var courseService: CourseService,
+    private var userService: UserService,
 ) {
-    init {
-        val topico = Topico(
-            id = 1,
-            titulo = "Primeira dúvida sobre KT",
-            mensagem = "Gostaria de qualquer resposta para minha pergunta",
-            datacriacao = LocalDateTime.now(),
-            curso = Curso(
-                1,
-                "Kotlin",
-                "Programação"
-            ),
-            autor = Usuario(
-                1,
-                "Caike Bispo",
-                "aa@aa.com"
-            ),
-            status = StatusTopico.NAO_RESPONDIDO,
-        )
+    fun list(): List<Topic> = topics
 
-        val topico2 = Topico(
-            id = 2,
-            titulo = "Segunda dúvida sobre KT",
-            mensagem = "Gostaria de qualquer resposta para minha pergunta",
-            datacriacao = LocalDateTime.now(),
-            curso = Curso(
-                1,
-                "Kotlin",
-                "Programação"
-            ),
-            autor = Usuario(
-                1,
-                "Caike Bispo",
-                "aa@aa.com"
-            ),
-            status = StatusTopico.NAO_RESPONDIDO,
-        )
+    fun listById(id: Long): Topic = topics.stream().filter { t -> t.id == id }.findFirst().get()
 
-        val topico3 = Topico(
-            id = 3,
-            titulo = "Terceira dúvida sobre KT",
-            mensagem = "Gostaria de qualquer resposta para minha pergunta",
-            datacriacao = LocalDateTime.now(),
-            curso = Curso(
-                1,
-                "Kotlin",
-                "Programação"
-            ),
-            autor = Usuario(
-                1,
-                "Caike Bispo",
-                "aa@aa.com"
-            ),
-            status = StatusTopico.NAO_RESPONDIDO,
+    fun register(dto: NovoTopicoDTO) {
+        topics = topics.plus(
+            Topic(
+                id = topics.size.toLong() + 1,
+                titulo = dto.title,
+                mensagem = dto.message,
+                curso = courseService.findById(dto.idCourse),
+                autor = userService.findById(dto.idAuthor)
             )
-
-        topicos = listOf(topico, topico2, topico3)
+        )
     }
-    fun list(): List<Topico> = topicos
-
-    fun listById(id: Long): Topico = topicos.stream().filter { t -> t.id == id }.findFirst().get()
 }
