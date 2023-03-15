@@ -10,6 +10,35 @@ http://localhost:8080/topics
 **Select topic by id** <br>
 http://localhost:8080/topics/1
 
+**Exemplo de retorno**
+
+```JSON
+// 20230314224601
+// http://localhost:8080/topics/3
+
+{
+  "id": 3,
+  "titulo": "Qualquer dúvida sobre Kotlin",
+  "mensagem": "Como permitir variáveis nulas?",
+  "datacriacao": "2023-03-14T23:27:36.7415029",
+  "curso": {
+    "id": 1,
+    "nome": "Kotlin",
+    "categoria": "Programação"
+  },
+  "autor": {
+    "id": 1,
+    "nome": "Caike Bispo",
+    "email": "caike@bispo.com"
+  },
+  "status": "NAO_RESPONDIDO",
+  "respostas": [
+
+  ]
+}
+
+```
+
 # Register
 **Add new topic** <br>
 http://localhost:8080/topics
