@@ -1,6 +1,6 @@
 package br.com.alura.forum.model
 
-data class Curso (
+data class Course (
     var id: Long?,
     var nome: String,
     var categoria: String,
