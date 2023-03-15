@@ -1,15 +1,16 @@
 # Topics
-**List all**<br>
+**List all topics**<br>
 http://localhost:8080/topics
 
-**Select by id** <br>
+**Select topic by id** <br>
 http://localhost:8080/topics/1
 
 # Register
-**POST to** <br>
+**Add new topic** <br>
 http://localhost:8080/topics
 
-**Body**
+
+**Post Body**
 ```JSON
 {
     "title": "Qualquer dúvida sobre Kotlin",
