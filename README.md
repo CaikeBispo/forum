@@ -1,7 +1,7 @@
 # Objective
-Project created with objective to develop and train the knowledges in Kolin and Spring Framework. <br>
+Project created with objective to develop and train the knowledge in Kotlin and Spring Framework. <br>
 
-Development of a internet forum API's.
+Development of an internet forum API's.
 
 # Topics
 **List all topics**<br>
@@ -10,12 +10,13 @@ http://localhost:8080/topics
 **Select topic by id** <br>
 http://localhost:8080/topics/1
 
-**Exemplo de retorno**
-
-```JSON
+**Return example**
+```KOTLIN
 // 20230314224601
 // http://localhost:8080/topics/3
+```
 
+```JSON
 {
   "id": 3,
   "titulo": "Qualquer dúvida sobre Kotlin",
