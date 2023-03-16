@@ -28,7 +28,7 @@ http://localhost:8080/topics/1 <br><br>
     // http://localhost:8080/topics/3
     ```
 
-    ```JSON
+  ```JSON
   [
     {
         "id": 1,
@@ -52,5 +52,5 @@ http://localhost:8080/topics/1 <br><br>
         "dateCriation": "2023-03-15T23:28:40.667184"
     }
   ]
-      ```
+```
 
