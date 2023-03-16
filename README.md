@@ -29,25 +29,28 @@ http://localhost:8080/topics/1 <br><br>
     ```
 
     ```JSON
+  [
     {
-      "id": 3,
-      "titulo": "Qualquer dúvida sobre Kotlin",
-      "mensagem": "Como permitir variáveis nulas?",
-      "datacriacao": "2023-03-14T23:27:36.7415029",
-      "curso": {
         "id": 1,
-        "nome": "Kotlin",
-        "categoria": "Programação"
-      },
-      "autor": {
-        "id": 1,
-        "nome": "Caike Bispo",
-        "email": "caike@bispo.com"
-      },
-      "status": "NAO_RESPONDIDO",
-      "respostas": [
-    
-      ]
+        "title": "Qualquer dúvida sobre Kotlin",
+        "message": "Como permitir variáveis nulas?",
+        "status": "NAO_RESPONDIDO",
+        "dateCriation": "2023-03-15T23:28:16.8909937"
+    },
+    {
+        "id": 2,
+        "title": "Qualquer dúvida sobre Java",
+        "message": "Como permitir variáveis nulas?",
+        "status": "NAO_RESPONDIDO",
+        "dateCriation": "2023-03-15T23:28:37.8183158"
+    },
+    {
+        "id": 3,
+        "title": "Qualquer dúvida sobre C",
+        "message": "Como permitir variáveis nulas?",
+        "status": "NAO_RESPONDIDO",
+        "dateCriation": "2023-03-15T23:28:40.667184"
     }
-    ```
+  ]
+      ```
 

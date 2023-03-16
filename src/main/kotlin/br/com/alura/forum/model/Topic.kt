@@ -4,11 +4,11 @@ import java.time.LocalDateTime
 
 data class Topic(
     val id: Long? = null,
-    val titulo: String,
-    val mensagem: String,
-    val datacriacao: LocalDateTime = LocalDateTime.now(),
-    val curso: Course,
-    val autor: Users,
+    val title: String,
+    val message: String,
+    val dateCriation: LocalDateTime = LocalDateTime.now(),
+    val course: Course,
+    val author: Users,
     val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
-    val respostas: List<Respostas> = ArrayList()
+    val answers: List<Respostas> = ArrayList()
 )
