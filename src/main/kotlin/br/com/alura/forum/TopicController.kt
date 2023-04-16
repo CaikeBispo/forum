@@ -27,6 +27,9 @@ class TopicController(
         return service.listById(id);
     }
 
+    @GetMapping("/nome")
+    fun caike(): String = "Caike Bispo"
+
     @PostMapping
     fun register(@RequestBody dto: NewTopicForm) {
         service.register(dto)
