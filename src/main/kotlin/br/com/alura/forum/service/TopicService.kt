@@ -5,7 +5,9 @@ import br.com.alura.forum.dto.TopicView
 import br.com.alura.forum.mapper.TopicFormMapper
 import br.com.alura.forum.mapper.TopicViewMapper
 import br.com.alura.forum.model.Topic
+import jakarta.validation.Valid
 import org.springframework.stereotype.Service
+import org.springframework.web.bind.annotation.RequestBody
 import java.util.stream.Collectors
 
 @Service
@@ -27,8 +29,8 @@ class TopicService(
     }
 
     fun register(form: NewTopicForm) {
-        val updatedTopic = topicFormMapper.map(form)
-        updatedTopic.id = topics.size.toLong() + 1
-        topics = topics.plus(updatedTopic)
+        val topic = topicFormMapper.map(form)
+        topic.id = topics.size.toLong() + 1
+        topics = topics.plus(topic)
     }
 }
