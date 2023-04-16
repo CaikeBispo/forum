@@ -50,4 +50,14 @@ class TopicService(
 
         return true;
     }
+
+    fun deleteTopic(idToDelete: Long) {
+        topics = topics.minus(
+            topics.stream().filter{ t ->
+                t.id == idToDelete
+            }.findFirst().get()
+        )
+
+    }
+
 }
