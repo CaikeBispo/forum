@@ -1,13 +1,12 @@
 package br.com.alura.forum.service
 
-import br.com.alura.forum.dto.NewTopicForm
+import br.com.alura.forum.dto.TopicFormNew
+import br.com.alura.forum.dto.TopicFormUpdate
 import br.com.alura.forum.dto.TopicView
 import br.com.alura.forum.mapper.TopicFormMapper
 import br.com.alura.forum.mapper.TopicViewMapper
 import br.com.alura.forum.model.Topic
-import jakarta.validation.Valid
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestBody
 import java.util.stream.Collectors
 
 @Service
@@ -28,9 +27,27 @@ class TopicService(
         return topicViewMapper.map(topic)
     }
 
-    fun register(form: NewTopicForm) {
+    fun register(form: TopicFormNew) {
         val topic = topicFormMapper.map(form)
         topic.id = topics.size.toLong() + 1
         topics = topics.plus(topic)
+    }
+
+    fun changeTopic(form: TopicFormUpdate):Boolean {
+        var topic = topics.stream().filter {t ->
+            t.id == form.id
+        }.findFirst().get()
+
+        topics = topics.minus(topic).plus(Topic(
+            id = form.id,
+            title = form.title,
+            message = form.message,
+            course = topic.course,
+            author = topic.author,
+            answers = topic.answers
+
+        ))
+
+        return true;
     }
 }
