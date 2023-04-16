@@ -4,6 +4,7 @@ import br.com.alura.forum.dto.NewTopicForm
 import br.com.alura.forum.dto.TopicView
 import br.com.alura.forum.model.*
 import br.com.alura.forum.service.TopicService
+import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -31,7 +32,7 @@ class TopicController(
     fun caike(): String = "Caike Bispo"
 
     @PostMapping
-    fun register(@RequestBody dto: NewTopicForm) {
+    fun register(@RequestBody @Valid dto: NewTopicForm) {
         service.register(dto)
     }
 
