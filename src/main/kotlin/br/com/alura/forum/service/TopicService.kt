@@ -3,6 +3,7 @@ package br.com.alura.forum.service
 import br.com.alura.forum.dto.TopicFormNew
 import br.com.alura.forum.dto.TopicFormUpdate
 import br.com.alura.forum.dto.TopicView
+import br.com.alura.forum.exception.NotFoundException
 import br.com.alura.forum.mapper.TopicFormMapper
 import br.com.alura.forum.mapper.TopicViewMapper
 import br.com.alura.forum.model.Topic
@@ -13,7 +14,8 @@ import java.util.stream.Collectors
 class TopicService(
     private var topics: List<Topic> = ArrayList(),
     private val topicViewMapper: TopicViewMapper,
-    private val topicFormMapper: TopicFormMapper
+    private val topicFormMapper: TopicFormMapper,
+    private val notFoundMessage: String = "Topic not found"
 ) {
     fun list(): List<TopicView> {
         return topics.stream().map {
@@ -22,7 +24,7 @@ class TopicService(
     }
 
     fun listById(id: Long): TopicView{
-        val topic = topics.stream().filter { t -> t.id == id }.findFirst().get()
+        val topic = topics.stream().filter { t -> t.id == id }.findFirst().orElseThrow{NotFoundException(notFoundMessage)}
 
         return topicViewMapper.map(topic)
     }
@@ -36,11 +38,11 @@ class TopicService(
     }
 
     fun changeTopic(form: TopicFormUpdate):TopicView {
-        var topic = topics.stream().filter {t ->
+        val topic = topics.stream().filter {t ->
             t.id == form.id
-        }.findFirst().get()
+        }.findFirst().orElseThrow{NotFoundException(notFoundMessage)}
 
-        var changedTopic = Topic(
+        val changedTopic = Topic(
             id = form.id,
             title = form.title,
             message = form.message,
@@ -59,7 +61,7 @@ class TopicService(
         topics = topics.minus(
             topics.stream().filter{ t ->
                 t.id == idToDelete
-            }.findFirst().get()
+            }.findFirst().orElseThrow{NotFoundException(notFoundMessage)}
         )
 
     }
