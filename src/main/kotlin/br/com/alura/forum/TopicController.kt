@@ -5,6 +5,7 @@ import br.com.alura.forum.dto.TopicView
 import br.com.alura.forum.dto.TopicFormUpdate
 import br.com.alura.forum.model.*
 import br.com.alura.forum.service.TopicService
+import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -39,6 +40,7 @@ class TopicController(
     fun caike(): String = "Caike Bispo"
 
     @PostMapping
+    @Transactional
     fun register(
         @RequestBody @Valid form: TopicFormNew,
         uriBuilder: UriComponentsBuilder):ResponseEntity<TopicView> {
@@ -49,6 +51,7 @@ class TopicController(
     }
 
     @PutMapping
+    @Transactional
     fun changeTopic(@RequestBody @Valid form: TopicFormUpdate):ResponseEntity<TopicView>{
         val topicView = service.changeTopic(form)
 

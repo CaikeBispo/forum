@@ -7,15 +7,15 @@ import java.time.LocalDateTime
 data class Topic(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    val title: String,
-    val message: String,
+    var title: String,
+    var message: String,
     val dateCriation: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     val course: Course,
     @ManyToOne
     val author: Users,
     @Enumerated(value = EnumType.STRING)
-    val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
+    val status: StatusTopic = StatusTopic.NAO_RESPONDIDO,
     @OneToMany(mappedBy = "topic")
     val answers: List<Answers> = ArrayList()
 )

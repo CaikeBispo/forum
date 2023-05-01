@@ -16,7 +16,7 @@ data class Answers (
     @ManyToOne
     val autor: Users,
     @ManyToOne
-    val topico: String,
+    val topic: Topic,
     val solucao: Boolean
 )
 
