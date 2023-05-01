@@ -3,6 +3,13 @@
 * Development of an internet forum APIs.
 
 # Topics
+
+* **DELETE BY ID** <br>
+
+
+* **CHANGE BY ID** <br>
+asd
+
 * **REGISTER NEW** <br>
 http://localhost:8080/topics
 

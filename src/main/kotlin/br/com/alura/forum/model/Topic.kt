@@ -1,14 +1,21 @@
 package br.com.alura.forum.model
 
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
+@Entity
 data class Topic(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
-    val title: String,
-    val message: String,
+    var title: String,
+    var message: String,
     val dateCriation: LocalDateTime = LocalDateTime.now(),
+    @ManyToOne
     val course: Course,
+    @ManyToOne
     val author: Users,
-    val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
-    val answers: List<Respostas> = ArrayList()
+    @Enumerated(value = EnumType.STRING)
+    val status: StatusTopic = StatusTopic.NAO_RESPONDIDO,
+    @OneToMany(mappedBy = "topic")
+    val answers: List<Answers> = ArrayList()
 )
