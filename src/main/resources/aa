@@ -1,3 +1,0 @@
-insert into course(id, nome, categoria) values(1, 'Kotlin', 'Curso de teste');
-
-insert into user(id, nome, email) values(1, 'Ingrid Bispo', 'ingrid@bispo.com');
