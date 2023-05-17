@@ -1,5 +1,5 @@
 create table if not exists topic (
-    id bigint not null,
+    id bigint not null auto_increment, 
     title varchar not null,
     message varchar not null,
     dt_criation datetime not null,
