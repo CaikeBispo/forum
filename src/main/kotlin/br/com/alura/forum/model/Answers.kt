@@ -12,12 +12,12 @@ data class Answers (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long?,
     val mensagem: String,
-    val dataCriacao: LocalDateTime = LocalDateTime.now(),
+    val dtCriation: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
-    val autor: Users,
+    val author: Users,
     @ManyToOne
     val topic: Topic,
-    val solucao: Boolean
+    val solution: Boolean
 )
 
 

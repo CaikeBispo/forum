@@ -9,7 +9,7 @@ data class Topic(
     var id: Long? = null,
     var title: String,
     var message: String,
-    val dateCriation: LocalDateTime = LocalDateTime.now(),
+    val dtCriation: LocalDateTime = LocalDateTime.now(),
     @ManyToOne
     val course: Course,
     @ManyToOne
