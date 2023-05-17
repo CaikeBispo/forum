@@ -10,6 +10,5 @@ data class Course (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long?,
     var name: String,
-    var category: String,
-    private var status: Boolean = true
+    var category: String
 )
