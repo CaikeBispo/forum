@@ -6,8 +6,6 @@ import br.com.alura.forum.dto.TopicView
 import br.com.alura.forum.exception.NotFoundException
 import br.com.alura.forum.mapper.TopicFormMapper
 import br.com.alura.forum.mapper.TopicViewMapper
-import br.com.alura.forum.model.Topic
-import br.com.alura.forum.repository.CourseRepository
 import br.com.alura.forum.repository.TopicRepository
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
@@ -19,8 +17,13 @@ class TopicService(
     private val topicFormMapper: TopicFormMapper,
     private val notFoundMessage: String = "Topic not found"
 ) {
-    fun list(): List<TopicView> {
-        return repository.findAll().stream().map {
+    fun list(courseName: String?): List<TopicView> {
+        var topics = if(!courseName.isNullOrEmpty()){
+            repository.findByCourseName(courseName)
+        } else {
+            repository.findAll()
+        }
+        return topics.stream().map {
                 t -> topicViewMapper.map(t)
         }.collect(Collectors.toList())
     }

@@ -9,7 +9,7 @@ import jakarta.persistence.Id
 data class Course (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long?,
-    var nome: String,
+    var name: String,
     var category: String,
     private var status: Boolean = true
 )
