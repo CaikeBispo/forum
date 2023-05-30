@@ -40,6 +40,7 @@ class TopicController(
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = ["topicos"], allEntries = true)
     fun register(
         @RequestBody @Valid form: TopicFormNew,
         uriBuilder: UriComponentsBuilder):ResponseEntity<TopicView> {
@@ -51,6 +52,7 @@ class TopicController(
 
     @PutMapping
     @Transactional
+    @CacheEvict(value = ["topicos"], allEntries = true)
     fun changeTopic(@RequestBody @Valid form: TopicFormUpdate):ResponseEntity<TopicView>{
         val topicView = service.changeTopic(form)
 
@@ -59,6 +61,7 @@ class TopicController(
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @CacheEvict(value = ["topicos"], allEntries = true)
     fun deleteTopic(@PathVariable id: Long){
         service.deleteTopic(id)
     }
