@@ -59,6 +59,7 @@ class TopicController(
         return ResponseEntity.ok(topicView)
     }
 
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @CacheEvict(value = ["topicos"], allEntries = true)
