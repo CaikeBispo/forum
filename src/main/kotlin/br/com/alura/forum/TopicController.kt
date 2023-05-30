@@ -22,6 +22,7 @@ class TopicController(
     private val service: TopicService
 ) {
     @GetMapping
+    @Cacheable("topicos")
     fun list(
         @RequestParam(required = false) courseName:String?,
         @PageableDefault(size = 3) pagination: Pageable
